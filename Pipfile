@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+asynckivy = ">=0.5"
+"kivyx.uix.analogclock" = {editable = true, path = "."}
+
+[dev-packages]
+kivy = {extras = ["base"], version = "*"}
+pytest = "*"
+
+[requires]
+python_version = "3.8"
