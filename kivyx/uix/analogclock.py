@@ -63,7 +63,7 @@ class KXAnalogClock(Widget):
     '''
     The labels drawn on the clock. If you set this, `textures` needs to be None. Read the examples to see what kind
     of `Iterable[Dict]` you need to provide.
-     '''
+    '''
 
     textures = ObjectProperty(None, allownone=True)  # Iterable[Texture]
     '''The textures drawn on the clock. If you set this, `labels` needs to be None. '''
@@ -109,14 +109,14 @@ class KXAnalogClock(Widget):
             ig.add(Color(1.0, 1.0, 1.0, 1.0))
             for rect in rects:
                 ig.add(rect)
-            trigger_layout = partial(
+            layout_labels = partial(
                 self._layout_labels,
                 offsets,
                 rects,
                 radius_adjustment,
                 _calc_circular_layout(len(rects))
             )
-            bind_uid = self.fbind('size', Clock.schedule_once(trigger_layout, -1))
+            bind_uid = self.fbind('size', Clock.schedule_once(layout_labels, -1))
             await ak.sleep_forever()
         finally:
             self.unbind_uid('size', bind_uid)
