@@ -30,19 +30,19 @@ Builder.load_string('''
             rgba: self.seconds_hand_color
         Line:
             width: self.seconds_hand_width
-            points: (s := min(self.size) / 2.2, r := self.time % 60. * tau_slash_60, ) and (0, 0, sin(r) * s, cos(r) * s)
+            points: (s := min(self.size) / 2.2, r := self.time * tau_slash_60, ) and (0, 0, sin(r) * s, cos(r) * s)
             cap: 'none'
         Color:
             rgba: self.minutes_hand_color
         Line:
             width: self.minutes_hand_width
-            points: (s := min(self.size) / 2.2, r := self.time % 3600. * tau_slash_3600, ) and (0, 0, sin(r) * s, cos(r) * s)
+            points: (s := min(self.size) / 2.2, r := self.time * tau_slash_3600, ) and (0, 0, sin(r) * s, cos(r) * s)
             cap: 'none'
         Color:
             rgba: self.hours_hand_color
         Line:
             width: self.hours_hand_width
-            points: (s := min(self.size) / 3.2, r := self.time % 43200. * tau_slash_43200, ) and (0, 0, sin(r) * s, cos(r) * s)
+            points: (s := min(self.size) / 3.2, r := self.time * tau_slash_43200, ) and (0, 0, sin(r) * s, cos(r) * s)
             cap: 'none'
         PopMatrix:
 ''')
