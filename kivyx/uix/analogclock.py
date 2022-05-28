@@ -30,19 +30,19 @@ Builder.load_string('''
             rgba: self.seconds_hand_color
         Line:
             width: self.seconds_hand_width
-            points: (s := min(self.size) / 2.2, r := self.time * tau_slash_60, ) and (0, 0, sin(r) * s, cos(r) * s)
+            points: (s := min(self.size) * self.seconds_hand_length, r := self.time * tau_slash_60, ) and (0, 0, sin(r) * s, cos(r) * s)
             cap: 'none'
         Color:
             rgba: self.minutes_hand_color
         Line:
             width: self.minutes_hand_width
-            points: (s := min(self.size) / 2.2, r := self.time * tau_slash_3600, ) and (0, 0, sin(r) * s, cos(r) * s)
+            points: (s := min(self.size) * self.minutes_hand_length, r := self.time * tau_slash_3600, ) and (0, 0, sin(r) * s, cos(r) * s)
             cap: 'none'
         Color:
             rgba: self.hours_hand_color
         Line:
             width: self.hours_hand_width
-            points: (s := min(self.size) / 3.2, r := self.time * tau_slash_43200, ) and (0, 0, sin(r) * s, cos(r) * s)
+            points: (s := min(self.size) * self.hours_hand_length, r := self.time * tau_slash_43200, ) and (0, 0, sin(r) * s, cos(r) * s)
             cap: 'none'
         PopMatrix:
 ''')
@@ -54,10 +54,13 @@ class KXAnalogClock(Widget):
 
     seconds_hand_color = ColorProperty("#FFFFFFFF")
     seconds_hand_width = NumericProperty('1dp')
+    seconds_hand_length = NumericProperty(0.45)  # fraction of 'min(self.size)'
     minutes_hand_color = ColorProperty("#FFFFFFFF")
     minutes_hand_width = NumericProperty('2dp')
+    minutes_hand_length = NumericProperty(0.45)  # fraction of 'min(self.size)'
     hours_hand_color = ColorProperty("#FFFFFFFF")
     hours_hand_width = NumericProperty('4dp')
+    hours_hand_length = NumericProperty(0.31)  # fraction of 'min(self.size)'
 
     labels = ObjectProperty(None, allownone=True)  # Iterable[Dict]
     '''
