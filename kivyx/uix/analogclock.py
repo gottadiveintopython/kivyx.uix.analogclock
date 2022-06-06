@@ -113,7 +113,8 @@ class KXAnalogClock(Widget):
             for rect in rects:
                 ig.add(rect)
             layout_labels = partial(
-                self._layout_labels,
+                KXAnalogClock._layout_labels,
+                self,
                 offsets,
                 rects,
                 radius_adjustment,
